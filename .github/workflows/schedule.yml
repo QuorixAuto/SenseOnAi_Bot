@@ -1,0 +1,25 @@
+name: Stock Bot Scheduler
+
+on:
+  schedule:
+    # 한국시간 아침 9시는 협정세계시(UTC) 기준 0시 0분입니다. (월~금 작동)
+    - cron: '0 0 * * 1-5'
+  workflow_dispatch: # 내가 원할 때 수동으로 바로 실행할 수 있는 버튼 추가
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소에서 내 코드 가져오기
+        uses: actions/checkout@v3
+
+      - name: 파이썬 설치하기
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 필요한 도구 설치하기
+        run: pip install -r requirements.txt
+
+      - name: 내 주식 알림 봇 실행하기!
+        run: python stock_bot.py
