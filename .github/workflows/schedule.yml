@@ -1,4 +1,4 @@
-name: Stock Bot Scheduler
+name: SenseOnAi Bot Scheduler
 
 on:
   schedule:
@@ -22,4 +22,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 내 주식 알림 봇 실행하기!
-        run: python stock_bot.py
+        run: python SenseOnAi_bot.py
